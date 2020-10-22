@@ -25,8 +25,8 @@ class _DoctorProfileState extends State<DoctorProfile> {
   bool validInfo = true;
 
   validatePhone(String phone) {
-    if(!(phone.length == 11) && phone.isNotEmpty) {
-      return "Invalid Phone Number Length";
+    if (!(phone.length == 11) && phone.isNotEmpty) {
+      return "தவறாக உள்ளது ..! சரிபார்க்கவும் ";
     }
     return null;
   }
@@ -34,14 +34,14 @@ class _DoctorProfileState extends State<DoctorProfile> {
   profileUpdate() {
     Firestore.instance
         .collection('docAbout')
-        .document(
-        widget.doctorDetails.userEmail)
-        .setData(
-        {'about': controllerBio.text,
-        'phone' : controllerPhone.text,
-        'spec' : controllerSpec.text});
-    Toast.show('Profile Updated!', context, backgroundColor: Colors.blue, backgroundRadius: 5,
-        duration: 2);
+        .document(widget.doctorDetails.userEmail)
+        .setData({
+      'about': controllerBio.text,
+      'phone': controllerPhone.text,
+      'spec': controllerSpec.text
+    });
+    Toast.show('ப்ரோஃபைல் புதுப்பிக்கப்பட்டது !', context,
+        backgroundColor: Colors.blue, backgroundRadius: 5, duration: 2);
   }
 
   @override
@@ -57,9 +57,11 @@ class _DoctorProfileState extends State<DoctorProfile> {
       maxLength: 200,
       controller: controllerBio,
       decoration: InputDecoration(
-        hintText: 'Tell us more about yourself.',
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+        hintText: 'உங்களை பற்றி கூறுங்கள் .',
+        enabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+        focusedBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
       ),
     );
 
@@ -68,25 +70,32 @@ class _DoctorProfileState extends State<DoctorProfile> {
       autofocus: false,
       maxLength: 11,
       controller: controllerPhone,
-      decoration:  InputDecoration (
-          hintText: 'Enter Phone',
-          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+      decoration: InputDecoration(
+        hintText: 'உங்கள் மொபைல் எண்ணை உள்ளிடுங்கள் ',
+        enabledBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+        focusedBorder:
+            OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
       ),
     );
 
     final specialization = TextField(
-      keyboardType: TextInputType.text,
-      autofocus: false,
-      controller: controllerSpec,
-        decoration:  InputDecoration (
-          hintText: 'Your Specialization',
-          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-          errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: Colors.red)),
-          focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(5), borderSide: BorderSide(color: Colors.red)),
-        )
-    );
+        keyboardType: TextInputType.text,
+        autofocus: false,
+        controller: controllerSpec,
+        decoration: InputDecoration(
+          hintText: 'உங்கள் தனித்துவம் ',
+          enabledBorder:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+          focusedBorder:
+              OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
+          errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: Colors.red)),
+          focusedErrorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: Colors.red)),
+        ));
 
     return Scaffold(
         body: GestureDetector(
@@ -118,13 +127,13 @@ class _DoctorProfileState extends State<DoctorProfile> {
                       height: height * 0.03,
                     ),
                     Text(
-                      'Dr. ' + widget.doctorDetails.userName,
+                      'வைத்தியர் . ' + widget.doctorDetails.userName,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                     SizedBox(height: height * 0.007),
                     Text(
-                      "Email: " + widget.doctorDetails.userEmail,
+                      "மின்னஞ்சல் : " + widget.doctorDetails.userEmail,
                       style: TextStyle(
                           fontSize: height * 0.02,
                           fontWeight: FontWeight.w300,
@@ -141,71 +150,88 @@ class _DoctorProfileState extends State<DoctorProfile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
-                                "About:",
+                                "தன்னை :",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: height * 0.02),
                               ),
                               Container(
-                                height: height * 0.032,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    !aboutCheck ? FloatingActionButton(
-                                      shape: CircleBorder(),
-                                        backgroundColor: Colors.white,
-                                        onPressed: () {
-                                          setState(() {
-                                            aboutCheck = !aboutCheck;
-                                          });
-                                        },
-                                        child: WidgetAnimator(
-                                          Icon(
-                                            Icons.edit,
-                                            size: height * 0.02,
-                                            color: Colors.black,
-                                          ),
-                                        )) : Container(),
-                                    aboutCheck ? Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        FloatingActionButton(
-                                          backgroundColor: Colors.green,
-                                          onPressed: () {
-                                            setState(() {
-                                              controllerPhone.text.isEmpty ? validInfo = false : validInfo = true;
-                                              if (validInfo == true) {
-                                                aboutCheck = !aboutCheck;
-                                              }
-                                            });
-                                            !aboutCheck ? profileUpdate() :
-                                            Toast.show('Empty Field Found!', context, backgroundColor: Colors.red, backgroundRadius: 5, duration: 3);
-                                          },
-                                          child: WidgetAnimator(
-                                            Icon(
-                                              Icons.done,
-                                              size: height * 0.025,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                        FloatingActionButton(
-                                          backgroundColor: Colors.white,
-                                          onPressed: (){
-                                            setState(() {
-                                              aboutCheck = !aboutCheck;
-                                            });
-                                          },
-                                          child: WidgetAnimator(
-                                            Icon(Icons.close, size: height * 0.025,
-                                              color: Colors.red,),
-                                          ),
-                                        ),
-                                      ],
-                                    ) : Container()
-                                  ],
-                                )
-                              ),
+                                  height: height * 0.032,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      !aboutCheck
+                                          ? FloatingActionButton(
+                                              shape: CircleBorder(),
+                                              backgroundColor: Colors.white,
+                                              onPressed: () {
+                                                setState(() {
+                                                  aboutCheck = !aboutCheck;
+                                                });
+                                              },
+                                              child: WidgetAnimator(
+                                                Icon(
+                                                  Icons.edit,
+                                                  size: height * 0.02,
+                                                  color: Colors.black,
+                                                ),
+                                              ))
+                                          : Container(),
+                                      aboutCheck
+                                          ? Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: <Widget>[
+                                                FloatingActionButton(
+                                                  backgroundColor: Colors.green,
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      controllerPhone
+                                                              .text.isEmpty
+                                                          ? validInfo = false
+                                                          : validInfo = true;
+                                                      if (validInfo == true) {
+                                                        aboutCheck =
+                                                            !aboutCheck;
+                                                      }
+                                                    });
+                                                    !aboutCheck
+                                                        ? profileUpdate()
+                                                        : Toast.show(
+                                                            'Empty Field Found!',
+                                                            context,
+                                                            backgroundColor:
+                                                                Colors.red,
+                                                            backgroundRadius: 5,
+                                                            duration: 3);
+                                                  },
+                                                  child: WidgetAnimator(
+                                                    Icon(
+                                                      Icons.done,
+                                                      size: height * 0.025,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                                FloatingActionButton(
+                                                  backgroundColor: Colors.white,
+                                                  onPressed: () {
+                                                    setState(() {
+                                                      aboutCheck = !aboutCheck;
+                                                    });
+                                                  },
+                                                  child: WidgetAnimator(
+                                                    Icon(
+                                                      Icons.close,
+                                                      size: height * 0.025,
+                                                      color: Colors.red,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            )
+                                          : Container()
+                                    ],
+                                  )),
                             ],
                           ),
                           SizedBox(
@@ -213,7 +239,10 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           ),
                           !aboutCheck
                               ? StreamBuilder(
-                                  stream: Firestore.instance.document('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
+                                  stream: Firestore.instance
+                                      .document(
+                                          'docAbout/${widget.doctorDetails.userEmail}')
+                                      .snapshots(),
                                   builder: (context, snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
@@ -234,35 +263,36 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                       );
                                     }
                                     var docAbout = snapshot.data;
-                                      return Container(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: width * 0.01,
-                                            vertical: height * 0.01),
-                                        height: height * 0.21,
-                                        width: width * 0.7,
-                                        decoration: BoxDecoration(
-                                          border:
-                                              Border.all(color: Colors.black12),
-                                          borderRadius:
-                                              BorderRadius.circular(5),
-                                        ),
-                                        child: ListView(
-                                          children: <Widget>[
-                                            Text(
-                                              docAbout['about'],
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w500, fontSize: height * 0.019),
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    }
-                                  )
+                                    return Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: width * 0.01,
+                                          vertical: height * 0.01),
+                                      height: height * 0.21,
+                                      width: width * 0.7,
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.black12),
+                                        borderRadius: BorderRadius.circular(5),
+                                      ),
+                                      child: ListView(
+                                        children: <Widget>[
+                                          Text(
+                                            docAbout['about'],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: height * 0.019),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  })
                               : bio,
                         ],
                       ),
                     ),
-                    SizedBox(height: height * 0.01,),
+                    SizedBox(
+                      height: height * 0.01,
+                    ),
                     Container(
                       width: width * 0.7,
                       child: Column(
@@ -279,56 +309,60 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           ),
                           !aboutCheck
                               ? StreamBuilder(
-                              stream: Firestore.instance.document('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return Container(
-                                    height: height * 0.041,
-                                    width: width * 0.7,
-                                    decoration: BoxDecoration(
-                                      border:
-                                      Border.all(color: Colors.black12),
-                                      borderRadius:
-                                      BorderRadius.circular(5),
-                                    ),
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 1,
+                                  stream: Firestore.instance
+                                      .document(
+                                          'docAbout/${widget.doctorDetails.userEmail}')
+                                      .snapshots(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return Container(
+                                        height: height * 0.041,
+                                        width: width * 0.7,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black12),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 1,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    var docAbout = snapshot.data;
+                                    return Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: width * 0.01,
+                                          vertical: height * 0.01),
+                                      height: height * 0.041,
+                                      width: width * 0.7,
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.black12),
+                                        borderRadius: BorderRadius.circular(5),
                                       ),
-                                    ),
-                                  );
-                                }
-                                var docAbout = snapshot.data;
-                                return Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: width * 0.01,
-                                      vertical: height * 0.01),
-                                  height: height * 0.041,
-                                  width: width * 0.7,
-                                  decoration: BoxDecoration(
-                                    border:
-                                    Border.all(color: Colors.black12),
-                                    borderRadius:
-                                    BorderRadius.circular(5),
-                                  ),
-                                  child: ListView(
-                                    children: <Widget>[
-                                      Text(
-                                        docAbout['phone'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500, fontSize: height * 0.019),
+                                      child: ListView(
+                                        children: <Widget>[
+                                          Text(
+                                            docAbout['phone'],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: height * 0.019),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                );
-                              }
-                          )
+                                    );
+                                  })
                               : phone,
                         ],
                       ),
                     ),
-                    SizedBox(height: height * 0.01,),
+                    SizedBox(
+                      height: height * 0.01,
+                    ),
                     Container(
                       width: width * 0.7,
                       child: Column(
@@ -345,56 +379,60 @@ class _DoctorProfileState extends State<DoctorProfile> {
                           ),
                           !aboutCheck
                               ? StreamBuilder(
-                              stream: Firestore.instance.document('docAbout/${widget.doctorDetails.userEmail}').snapshots(),
-                              builder: (context, snapshot) {
-                                if (snapshot.connectionState ==
-                                    ConnectionState.waiting) {
-                                  return Container(
-                                    height: height * 0.05,
-                                    width: width * 0.7,
-                                    decoration: BoxDecoration(
-                                      border:
-                                      Border.all(color: Colors.black12),
-                                      borderRadius:
-                                      BorderRadius.circular(5),
-                                    ),
-                                    child: Center(
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 1,
+                                  stream: Firestore.instance
+                                      .document(
+                                          'docAbout/${widget.doctorDetails.userEmail}')
+                                      .snapshots(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return Container(
+                                        height: height * 0.05,
+                                        width: width * 0.7,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.black12),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Center(
+                                          child: CircularProgressIndicator(
+                                            strokeWidth: 1,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    var docAbout = snapshot.data;
+                                    return Container(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: width * 0.01,
+                                          vertical: height * 0.01),
+                                      height: height * 0.05,
+                                      width: width * 0.7,
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Colors.black12),
+                                        borderRadius: BorderRadius.circular(5),
                                       ),
-                                    ),
-                                  );
-                                }
-                                var docAbout = snapshot.data;
-                                return Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: width * 0.01,
-                                      vertical: height * 0.01),
-                                  height: height * 0.05,
-                                  width: width * 0.7,
-                                  decoration: BoxDecoration(
-                                    border:
-                                    Border.all(color: Colors.black12),
-                                    borderRadius:
-                                    BorderRadius.circular(5),
-                                  ),
-                                  child: ListView(
-                                    children: <Widget>[
-                                      Text(
-                                        docAbout['spec'],
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500, fontSize: height * 0.019),
+                                      child: ListView(
+                                        children: <Widget>[
+                                          Text(
+                                            docAbout['spec'],
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: height * 0.019),
+                                          ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                );
-                              }
-                          )
+                                    );
+                                  })
                               : specialization,
                         ],
                       ),
                     ),
-                    SizedBox(height: height * 0.01,),
+                    SizedBox(
+                      height: height * 0.01,
+                    ),
                     RaisedButton.icon(
                         color: Colors.white,
                         onPressed: () {

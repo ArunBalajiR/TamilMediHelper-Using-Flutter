@@ -70,7 +70,7 @@ class PatientLogin extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Login",
+                    "உள்நுளை",
                     style: GoogleFonts.abel(
                         fontSize: height * 0.045, fontWeight: FontWeight.bold),
                   ),
@@ -84,12 +84,12 @@ class PatientLogin extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '1. Details about different Diseases/Medicines'
-                    '\n2. Add your favorite Doctors'
-                    '\n3. Request to add Disease/Medicine'
-                    '\n4. Report incorrect Disease/Medicine'
-                    '\n5. Search for Nearest Pharmacy'
-                    '\n6. Feeback/Complains',
+                    '1. பல்வேறு வியாதி /மருந்துக்கான விளக்கங்கள்'
+                    '\n2. உங்களுக்கு பிடித்த மருத்துவரை சேர்க்க'
+                    '\n3. புதிய வியாதி /மருந்தை சேர்க்க அணுகவும்'
+                    '\n4. தவறான வியாதி /மருந்தை புகார் அளிக்க '
+                    '\n5. அருகிலுள்ள மருந்தாகத்தை தேடு'
+                    '\n6. ஆலோசனைகள் / புகார்கள்',
                     style: TextStyle(
                         color: Colors.black.withOpacity(0.5),
                         height: height * 0.002),
@@ -115,7 +115,7 @@ class PatientLogin extends StatelessWidget {
                         ),
                         SizedBox(width: width * 0.02),
                         Text(
-                          'Login Using Gmail',
+                          'கூகிள் மூலம் உள்நுளைக',
                           style: TextStyle(
                               letterSpacing: 1.5,
                               fontWeight: FontWeight.w600,
@@ -136,7 +136,7 @@ class PatientLogin extends StatelessWidget {
                 child: WidgetAnimator(
                   Text(
                     '"The Job You are Struggling for will replace \nYou within a week if you found dead.'
-                    '\nTake care of yourself!"',
+                    '\nபாதுகாப்பாக இருங்கள் !"',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: height * 0.018,

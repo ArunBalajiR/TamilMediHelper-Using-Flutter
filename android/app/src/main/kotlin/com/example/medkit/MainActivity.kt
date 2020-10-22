@@ -1,4 +1,4 @@
-package com.example.medkit
+package com.deardev.marundhagam
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

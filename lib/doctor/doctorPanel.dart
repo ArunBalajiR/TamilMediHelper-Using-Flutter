@@ -32,14 +32,13 @@ class _DoctorPanelState extends State<DoctorPanel> {
     return (await showDialog(
           context: context,
           builder: (context) => new AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12)
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
             title: new Text(
-              "Are You Sure?",
+              "உறிதிபடுத்தவும் ?",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            content: new Text("You are about to Log Out!"),
+            content: new Text("நீங்கள் வெளியேற போகின்றீர்கள் !"),
             actions: <Widget>[
               new FlatButton(
                 color: Colors.white,
@@ -80,8 +79,7 @@ class _DoctorPanelState extends State<DoctorPanel> {
         child: Stack(
           children: <Widget>[
             Container(
-              margin: EdgeInsets.fromLTRB(
-                  0, height * 0.05, 0, 0),
+              margin: EdgeInsets.fromLTRB(0, height * 0.05, 0, 0),
               child: Hero(
                 tag: 'docPic',
                 child: FlatButton(
@@ -114,7 +112,8 @@ class _DoctorPanelState extends State<DoctorPanel> {
                         child: FloatingActionButton(
                           heroTag: 'editBtn',
                           tooltip: 'Edit Panel',
-                          backgroundColor: editPanel ? Colors.green : Colors.white,
+                          backgroundColor:
+                              editPanel ? Colors.green : Colors.white,
                           child: editPanel
                               ? WidgetAnimator(
                                   Icon(
@@ -137,31 +136,34 @@ class _DoctorPanelState extends State<DoctorPanel> {
                           },
                         ),
                       ),
-                      SizedBox(height: height * 0.01,),
+                      SizedBox(
+                        height: height * 0.01,
+                      ),
                       editPanel
                           ? Container(
-                        height: height * 0.045,
-                        child: WidgetAnimator(
-                          RawMaterialButton(
-                            shape: StadiumBorder(),
-                            fillColor: Colors.blue,
-                            child: Text(
-                              'Add More',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  new MaterialPageRoute(
-                                      builder: (context) => AddDisease(
-                                        doctorName:
-                                        widget.detailsUser.userName,
-                                        doctorEmail: widget.detailsUser.userEmail,
-                                      )));
-                            },
-                          ),
-                        ),
-                      )
+                              height: height * 0.045,
+                              child: WidgetAnimator(
+                                RawMaterialButton(
+                                  shape: StadiumBorder(),
+                                  fillColor: Colors.blue,
+                                  child: Text(
+                                    'மேலும் சேர்க்க ',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) => AddDisease(
+                                                  doctorName: widget
+                                                      .detailsUser.userName,
+                                                  doctorEmail: widget
+                                                      .detailsUser.userEmail,
+                                                )));
+                                  },
+                                ),
+                              ),
+                            )
                           : SizedBox(width: width * 0.245),
                     ],
                   ),
@@ -173,13 +175,13 @@ class _DoctorPanelState extends State<DoctorPanel> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        "Doctor's",
+                        "மருத்துவர் ",
                         style: GoogleFonts.abel(
                             fontSize: height * 0.042,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        'Panel',
+                        'பகுதி ',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
@@ -199,11 +201,9 @@ class _DoctorPanelState extends State<DoctorPanel> {
                   );
                 } else {
                   return Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0, height * 0.325, 0, 0),
+                    margin: EdgeInsets.fromLTRB(0, height * 0.325, 0, 0),
                     child: ListView.separated(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 12),
+                      padding: EdgeInsets.symmetric(horizontal: 12),
                       separatorBuilder: (context, index) => Divider(
                         color: Colors.transparent,
                       ),

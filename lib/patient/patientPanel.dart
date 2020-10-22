@@ -21,7 +21,6 @@ class PatientPanel extends StatefulWidget {
 }
 
 class _PatientPanelState extends State<PatientPanel> {
-
   Future getDiseaseInfo() async {
     var firestore = Firestore.instance;
     QuerySnapshot qn = await firestore.collection("Diseases").getDocuments();
@@ -38,42 +37,41 @@ class _PatientPanelState extends State<PatientPanel> {
 
   Future<bool> _onWillPop() async {
     return (await showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)
-        ),
-        title: new Text(
-          "Are You Sure?",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        content: new Text("You are about to Log Out!"),
-        actions: <Widget>[
-          new FlatButton(
-            color: Colors.white,
-            child: new Text(
-              "Close",
-              style: TextStyle(color: Colors.blue),
+          context: context,
+          builder: (context) => new AlertDialog(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            title: new Text(
+              " உறிதிபடுத்தவும் ?",
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
+            content: new Text("நீங்கள் வெளியேற போகின்றீர்கள் !"),
+            actions: <Widget>[
+              new FlatButton(
+                color: Colors.white,
+                child: new Text(
+                  "Close",
+                  style: TextStyle(color: Colors.blue),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              new FlatButton(
+                color: Colors.white,
+                child: new Text(
+                  "வெளியேறு ",
+                  style: TextStyle(color: Colors.red),
+                ),
+                onPressed: () {
+                  _gSignIn.signOut();
+                  int count = 0;
+                  Navigator.of(context).popUntil((_) => count++ >= 2);
+                },
+              ),
+            ],
           ),
-          new FlatButton(
-            color: Colors.white,
-            child: new Text(
-              "Log Out",
-              style: TextStyle(color: Colors.red),
-            ),
-            onPressed: () {
-              _gSignIn.signOut();
-              int count = 0;
-              Navigator.of(context).popUntil((_) => count++ >= 2);
-            },
-          ),
-        ],
-      ),
-    )) ??
+        )) ??
         false;
   }
 
@@ -95,9 +93,15 @@ class _PatientPanelState extends State<PatientPanel> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    GestureDetector(onTap: () => Navigator.of(context).pop(true),
-                        child: Icon(Icons.arrow_back, size: height * 0.04,)),
-                    SizedBox(width: width * 0.02,),
+                    GestureDetector(
+                        onTap: () => Navigator.of(context).pop(true),
+                        child: Icon(
+                          Icons.arrow_back,
+                          size: height * 0.04,
+                        )),
+                    SizedBox(
+                      width: width * 0.02,
+                    ),
                     Container(
                       width: width * 0.7,
                       height: height * 0.052,
@@ -107,7 +111,7 @@ class _PatientPanelState extends State<PatientPanel> {
                           autofocus: false,
                           textInputAction: TextInputAction.search,
                           decoration: InputDecoration(
-                              labelText: 'Disease/Medicine',
+                              labelText: 'நோய் / மருந்து ',
                               prefixIcon: WidgetAnimator(Icon(
                                 Icons.search,
                                 size: height * 0.03,
@@ -117,45 +121,46 @@ class _PatientPanelState extends State<PatientPanel> {
                         ),
                       ),
                     ),
-                    SizedBox(width: width * 0.02,),
+                    SizedBox(
+                      width: width * 0.02,
+                    ),
                     GestureDetector(
                       onTap: () => Navigator.push(
                           context,
                           new MaterialPageRoute(
                               builder: (context) => PatientProfile(
-                                doctorDetails: widget.detailsUser,
-                              ))),
+                                    doctorDetails: widget.detailsUser,
+                                  ))),
                       child: Hero(
                         tag: 'patPic',
                         child: CircleAvatar(
                             backgroundColor: Colors.black.withOpacity(0.2),
                             backgroundImage:
-                            NetworkImage(widget.detailsUser.photoUrl)),
+                                NetworkImage(widget.detailsUser.photoUrl)),
                       ),
                     ),
                   ],
                 ),
               ),
               Container(
-                height: height * 0.1,
-                width: width * 0.35,
-                  margin: EdgeInsets.fromLTRB(
-                      width * 0.21, height * 0.15, 0, 0),
+                  height: height * 0.1,
+                  width: width * 0.35,
+                  margin:
+                      EdgeInsets.fromLTRB(width * 0.21, height * 0.15, 0, 0),
                   child: FadeAnimation(
                     0.3,
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          "Patient's",
+                          "பயனாளரின்",
                           style: GoogleFonts.abel(
                               fontSize: height * 0.04,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'Panel',
-                          style: TextStyle(
-                              fontSize: height * 0.025),
+                          style: TextStyle(fontSize: height * 0.025),
                         )
                       ],
                     ),
@@ -174,12 +179,10 @@ class _PatientPanelState extends State<PatientPanel> {
                     );
                   } else {
                     return Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0, height * 0.32, 0, 0),
+                      margin: EdgeInsets.fromLTRB(0, height * 0.32, 0, 0),
                       child: ListView.separated(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 10),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         separatorBuilder: (context, index) => Divider(
                           color: Colors.transparent,
                         ),

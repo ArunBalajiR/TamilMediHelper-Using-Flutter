@@ -5,7 +5,6 @@ import 'package:medkit/animations/bottomAnimation.dart';
 import 'package:medkit/otherWidgetsAndScreen/backBtnAndImage.dart';
 import 'package:toast/toast.dart';
 
-
 final controllerDisName = TextEditingController();
 final controllerMedName = TextEditingController();
 final controllerMedDose = TextEditingController();
@@ -42,12 +41,11 @@ class _AddDiseaseState extends State<AddDisease> {
             backgroundColor: Colors.transparent,
             child: WidgetAnimator(
               Image(
-                image: AssetImage('assets/injection.png'),
-                height: height * 0.04
-              ),
+                  image: AssetImage('assets/injection.png'),
+                  height: height * 0.04),
             ),
           ),
-          labelText: 'Disease Name',
+          labelText: 'நோயின் பெயர் ',
           filled: true,
           fillColor: Colors.black.withOpacity(0.05),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
@@ -68,7 +66,7 @@ class _AddDiseaseState extends State<AddDisease> {
               ),
             ),
           ),
-          labelText: 'Medicine Name',
+          labelText: 'மருந்தின் பெயர் ',
           filled: true,
           fillColor: Colors.black.withOpacity(0.05),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
@@ -89,7 +87,7 @@ class _AddDiseaseState extends State<AddDisease> {
               ),
             ),
           ),
-          labelText: 'Medicine Dose',
+          labelText: 'மருந்து  அளவு ',
           filled: true,
           fillColor: Colors.black.withOpacity(0.05),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
@@ -109,7 +107,7 @@ class _AddDiseaseState extends State<AddDisease> {
               ),
             ),
           ),
-          labelText: 'Description',
+          labelText: 'விளக்கம் ',
           filled: true,
           fillColor: Colors.black.withOpacity(0.05),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
@@ -122,7 +120,7 @@ class _AddDiseaseState extends State<AddDisease> {
       controllerDesc.clear();
     }
 
-    addingDisease () {
+    addingDisease() {
       Firestore.instance
           .collection('Diseases')
           .document(controllerDisName.text)
@@ -131,12 +129,12 @@ class _AddDiseaseState extends State<AddDisease> {
         'medName': controllerMedName.text,
         'medTime': controllerMedDose.text,
         'medDesc': controllerDesc.text,
-        'post' : widget.doctorName,
-        'docEmail' : widget.doctorEmail
+        'post': widget.doctorName,
+        'docEmail': widget.doctorEmail
       });
       controllerClear();
-      Toast.show('Added Successfully!', context,
-         backgroundRadius: 5, backgroundColor: Colors.blue, duration: 3);
+      Toast.show('வெற்றிகரமாக சேர்க்கபட்டது !', context,
+          backgroundRadius: 5, backgroundColor: Colors.blue, duration: 3);
       Navigator.pop(context);
     }
 
@@ -145,19 +143,31 @@ class _AddDiseaseState extends State<AddDisease> {
         height: 50,
         child: RaisedButton(
           onPressed: () {
-              setState(() {
-                controllerDisName.text.isEmpty ? validDisName = true : validDisName = false;
-                controllerMedName.text.isEmpty ? validMedName = true : validMedName = false;
-                controllerMedDose.text.isEmpty ? validMedDose = true : validMedDose = false;
-                controllerDesc.text.isEmpty ? validDesc = true : validDesc = false;
-              });
-              !validDisName & !validMedName & !validMedDose & !validDesc ? addingDisease() :
-              Toast.show("Empty Field(s) Found!", context, backgroundColor: Colors.red, backgroundRadius: 5, duration: 2);
+            setState(() {
+              controllerDisName.text.isEmpty
+                  ? validDisName = true
+                  : validDisName = false;
+              controllerMedName.text.isEmpty
+                  ? validMedName = true
+                  : validMedName = false;
+              controllerMedDose.text.isEmpty
+                  ? validMedDose = true
+                  : validMedDose = false;
+              controllerDesc.text.isEmpty
+                  ? validDesc = true
+                  : validDesc = false;
+            });
+            !validDisName & !validMedName & !validMedDose & !validDesc
+                ? addingDisease()
+                : Toast.show("காலியாக உள்ளது ", context,
+                    backgroundColor: Colors.red,
+                    backgroundRadius: 5,
+                    duration: 2);
           },
           color: Colors.white,
           shape: StadiumBorder(),
           child: Text(
-            'Add',
+            'சேர் ',
             style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 2),
           ),
         ));
@@ -184,24 +194,21 @@ class _AddDiseaseState extends State<AddDisease> {
                   Row(
                     children: <Widget>[
                       Text(
-                        'Adding',
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: height * 0.04),
+                        'சேர்கிறது',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: height * 0.04),
                       ),
-                      SizedBox(
-                        width: height * 0.015
-                      ),
-                      Text(
-                        'Disease',
-                        style: GoogleFonts.abel(fontSize: height * 0.04)
-                      )
+                      SizedBox(width: height * 0.015),
+                      Text('நோய்',
+                          style: GoogleFonts.abel(fontSize: height * 0.04))
                     ],
                   ),
                   SizedBox(
                     height: height * 0.02,
                   ),
                   Text(
-                    'Enter the Following Information',
+                    'பின்வரும் விளக்கங்களை பதிவு செய்க ',
                     style: GoogleFonts.abel(fontSize: height * 0.025),
                   ),
                   SizedBox(

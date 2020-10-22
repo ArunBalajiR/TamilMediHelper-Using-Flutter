@@ -70,14 +70,14 @@ class _DoctorLoginState extends State<DoctorLogin> {
 
   validatePhone(String phone) {
     if (!(phone.length == 11) && phone.isNotEmpty) {
-      return "Invalid Phone Number length";
+      return "மொபைல் எண் தவறாக உள்ளது ";
     }
     return null;
   }
 
   validateCNIC(String idNumber) {
     if (!(idNumber.length == 13) && idNumber.isNotEmpty) {
-      return "CNIC must be of 13-Digits";
+      return "CNIC 13-இலக்க எண்ணாக இருக்க வேண்டும் ";
     }
     return null;
   }
@@ -97,7 +97,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
       decoration: InputDecoration(
           fillColor: Colors.black.withOpacity(0.07),
           filled: true,
-          labelText: 'Enter Name',
+          labelText: 'பெயர் ',
           prefixIcon: WidgetAnimator(Icon(Icons.person)),
           border: OutlineInputBorder(
               borderRadius: const BorderRadius.all(const Radius.circular(20)))),
@@ -113,7 +113,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
           filled: true,
           errorText: validateCNIC(_controllerCNIC.text),
           fillColor: Colors.black.withOpacity(0.07),
-          labelText: 'NIC Number',
+          labelText: 'NIC நம்பர் ',
           prefixIcon: WidgetAnimator(Icon(Icons.credit_card)),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
     );
@@ -163,7 +163,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                           height: height * 0.05,
                         ),
                         Text(
-                          "\t\tLogin",
+                          "\t\tஉள்நுளை ",
                           style: GoogleFonts.abel(
                               fontSize: height * 0.044,
                               fontWeight: FontWeight.bold),
@@ -194,7 +194,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                               });
                               !validateName & !validateCNICVar
                                   ? getInfoAndLogin()
-                                  : Toast.show("Empty Field(s) Found!", context,
+                                  : Toast.show("காலியாக உள்ளது !", context,
                                       backgroundColor: Colors.red,
                                       backgroundRadius: 5,
                                       duration: Toast.LENGTH_LONG);
@@ -225,7 +225,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                         ),
                         WidgetAnimator(
                           Text(
-                            'You Will be asked Question regarding your Qualifications!',
+                            'உங்கள் தகுதிக்கேர்ப்ப வினாக்கள் கேட்கப்படும் !',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
