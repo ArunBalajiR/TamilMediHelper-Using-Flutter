@@ -26,7 +26,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
 
   validatePhone(String phone) {
     if (!(phone.length == 11) && phone.isNotEmpty) {
-      return "தவறாக உள்ளது ..! சரிபார்க்கவும் ";
+      return "தவறாக உள்ளது..! சரிபார்க்கவும்";
     }
     return null;
   }
@@ -57,7 +57,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
       maxLength: 200,
       controller: controllerBio,
       decoration: InputDecoration(
-        hintText: 'உங்களை பற்றி கூறுங்கள் .',
+        hintText: 'உங்களை பற்றி கூறுங்கள்.',
         enabledBorder:
             OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
         focusedBorder:
@@ -71,7 +71,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
       maxLength: 11,
       controller: controllerPhone,
       decoration: InputDecoration(
-        hintText: 'உங்கள் மொபைல் எண்ணை உள்ளிடுங்கள் ',
+        hintText: 'உங்கள் மொபைல் எண்ணை உள்ளிடுங்கள்',
         enabledBorder:
             OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
         focusedBorder:
@@ -84,7 +84,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
         autofocus: false,
         controller: controllerSpec,
         decoration: InputDecoration(
-          hintText: 'உங்கள் தனித்துவம் ',
+          hintText: 'உங்கள் தனித்துவம்',
           enabledBorder:
               OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
           focusedBorder:
@@ -127,13 +127,13 @@ class _DoctorProfileState extends State<DoctorProfile> {
                       height: height * 0.03,
                     ),
                     Text(
-                      'வைத்தியர் . ' + widget.doctorDetails.userName,
+                      'வைத்தியர்.' + widget.doctorDetails.userName,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                     SizedBox(height: height * 0.007),
                     Text(
-                      "மின்னஞ்சல் : " + widget.doctorDetails.userEmail,
+                      "மின்னஞ்சல்: " + widget.doctorDetails.userEmail,
                       style: TextStyle(
                           fontSize: height * 0.02,
                           fontWeight: FontWeight.w300,
@@ -150,7 +150,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Text(
-                                "தன்னை :",
+                                "தன்னை: ",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: height * 0.02),
@@ -197,7 +197,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                                                     !aboutCheck
                                                         ? profileUpdate()
                                                         : Toast.show(
-                                                            'Empty Field Found!',
+                                                            'வெற்றிடம் உள்ளது!',
                                                             context,
                                                             backgroundColor:
                                                                 Colors.red,
@@ -299,7 +299,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Mobile No:",
+                            "மொபைல் எண்: ",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: height * 0.02),
@@ -482,16 +482,16 @@ class _DoctorProfileState extends State<DoctorProfile> {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           title: new Text(
-            "Are you Sure?",
+            "உறுதியா?",
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
-          content: Text("You are about to Log Out!"),
+          content: Text("நீங்கள் வெளியேரபோகிறீர்கள்!"),
           actions: <Widget>[
             // usually buttons at the bottom of the dialog
             FlatButton(
               color: Colors.white,
               child: Text(
-                "Close",
+                "பின்",
                 style: TextStyle(color: Colors.blue),
               ),
               onPressed: () {
@@ -501,7 +501,7 @@ class _DoctorProfileState extends State<DoctorProfile> {
             FlatButton(
               color: Colors.white,
               child: Text(
-                "Log Out",
+                "வெளியேறு",
                 style: TextStyle(color: Colors.red),
               ),
               onPressed: () {

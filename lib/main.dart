@@ -149,7 +149,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     FadeAnimation(
                         1,
                         Text(
-                          "Pharmacy in Your Hands!",
+                          "மருந்தகம் உங்கள் கைகளில்!",
                           style: TextStyle(
                               color: Colors.black.withOpacity(0.5),
                               fontSize: height * 0.017),
@@ -228,7 +228,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                         FadeAnimation(
                             1,
                             Text(
-                              'Proceed!',
+                              'தொடர்!',
                               textAlign: TextAlign.center,
                               style: GoogleFonts.openSans(fontSize: 20),
                             )),

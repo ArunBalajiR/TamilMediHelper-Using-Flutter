@@ -111,7 +111,7 @@ class _PatientPanelState extends State<PatientPanel> {
                           autofocus: false,
                           textInputAction: TextInputAction.search,
                           decoration: InputDecoration(
-                              labelText: 'நோய் / மருந்து ',
+                              labelText: 'நோய் / மருந்து',
                               prefixIcon: WidgetAnimator(Icon(
                                 Icons.search,
                                 size: height * 0.03,

@@ -147,7 +147,7 @@ class _DoctorPanelState extends State<DoctorPanel> {
                                   shape: StadiumBorder(),
                                   fillColor: Colors.blue,
                                   child: Text(
-                                    'மேலும் சேர்க்க ',
+                                    'மேலும் சேர்க்க',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   onPressed: () {
@@ -175,13 +175,13 @@ class _DoctorPanelState extends State<DoctorPanel> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        "மருத்துவர் ",
+                        "மருத்துவர்",
                         style: GoogleFonts.abel(
                             fontSize: height * 0.042,
                             fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        'பகுதி ',
+                        'பகுதி',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],

@@ -94,13 +94,22 @@ class _MedDetailsState extends State<MedDetails> {
                             RaisedButton(
                               color: Colors.blue,
                               shape: CircleBorder(),
-                              onPressed: (){
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => DoctorAbout(
-                                  docEmail: widget.snapshot.data['docEmail'],
-                                  docName: widget.snapshot.data['post'],
-                                )));
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => DoctorAbout(
+                                              docEmail: widget
+                                                  .snapshot.data['docEmail'],
+                                              docName:
+                                                  widget.snapshot.data['post'],
+                                            )));
                               },
-                              child: Icon(Icons.info, color: Colors.white, size: height * 0.05,),
+                              child: Icon(
+                                Icons.info,
+                                color: Colors.white,
+                                size: height * 0.05,
+                              ),
                             )
                           ],
                         ),
@@ -127,7 +136,7 @@ class _MedDetailsState extends State<MedDetails> {
                         Row(
                           children: <Widget>[
                             Text(
-                              'Medicine: ',
+                              'மருந்து: ',
                               style: TextStyle(fontSize: height * 0.03),
                             ),
                             WidgetAnimator(
@@ -146,7 +155,7 @@ class _MedDetailsState extends State<MedDetails> {
                         Row(
                           children: <Widget>[
                             Text(
-                              'Dose: ',
+                              'அளவு: ',
                               style: TextStyle(fontSize: height * 0.03),
                             ),
                             WidgetAnimator(

@@ -69,9 +69,9 @@ class Category extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        'தேர்ந்தேடுங்கள்',
+                        'தேர்ந்தெடுங்கள்',
                         style: TextStyle(
-                            color: Colors.black, fontSize: height * 0.04),
+                            color: Colors.black, fontSize: height * 0.03),
                       ),
                       FlatButton(
                         shape: CircleBorder(),
@@ -116,7 +116,7 @@ class Category extends StatelessWidget {
                   Column(
                     children: <Widget>[
                       Text(
-                        'Version',
+                        'பதிப்பு',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(

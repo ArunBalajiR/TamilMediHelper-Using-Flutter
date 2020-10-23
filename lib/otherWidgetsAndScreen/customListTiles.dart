@@ -24,7 +24,6 @@ class _CustomTileState extends State<CustomTile> {
         context, MaterialPageRoute(builder: (context) => DeletingWait()));
   }
 
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -34,8 +33,7 @@ class _CustomTileState extends State<CustomTile> {
         Navigator.push(
             context,
             new MaterialPageRoute(
-                builder: (context) =>
-                    MedDetails(
+                builder: (context) => MedDetails(
                       snapshot: widget.snapshot,
                     )));
       },
@@ -56,32 +54,32 @@ class _CustomTileState extends State<CustomTile> {
           children: <Widget>[
             Text(
               widget.snapshot.data['disName'],
-              style: GoogleFonts.lato(fontSize: height * 0.03, letterSpacing: 2),
+              style:
+                  GoogleFonts.lato(fontSize: height * 0.03, letterSpacing: 2),
             ),
             FlatButton(
               onPressed: () {
                 widget.delBtn
                     ? _deleteDisease(context)
                     : Navigator.push(
-                    context,
-                    new MaterialPageRoute(
-                        builder: (context) =>
-                            MedDetails(
-                              snapshot: widget.snapshot,
-                            )));
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) => MedDetails(
+                                  snapshot: widget.snapshot,
+                                )));
               },
               shape: CircleBorder(),
               child: widget.delBtn
                   ? Icon(
-                Icons.delete,
-                color: Colors.red,
-                size: height * 0.032,
-              )
+                      Icons.delete,
+                      color: Colors.red,
+                      size: height * 0.032,
+                    )
                   : Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.black54,
-                size: height * 0.032,
-              ),
+                      Icons.arrow_forward_ios,
+                      color: Colors.black54,
+                      size: height * 0.032,
+                    ),
             )
           ],
         ),
@@ -95,19 +93,14 @@ class DeletingWait extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(Duration(seconds: 2), () {
       Navigator.pop(context);
-      Toast.show("Deleted Successfully!", context, backgroundRadius: 5, backgroundColor: Colors.red, duration: 3);
+      Toast.show("நீக்கப்பட்டது!", context,
+          backgroundRadius: 5, backgroundColor: Colors.red, duration: 3);
     });
     return Scaffold(
       body: SafeArea(
         child: Container(
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
           color: Colors.white,
           child: Center(
             child: Column(
@@ -118,13 +111,10 @@ class DeletingWait extends StatelessWidget {
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
                 ),
                 SizedBox(
-                  height: MediaQuery
-                      .of(context)
-                      .size
-                      .height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.1,
                 ),
                 Text(
-                  'Deleting Please Wait...',
+                  'நீக்கப்படுகிறது காத்திருக்கவும்...',
                   style: TextStyle(color: Colors.red, fontSize: 17),
                 )
               ],

@@ -87,7 +87,7 @@ class _AddDiseaseState extends State<AddDisease> {
               ),
             ),
           ),
-          labelText: 'மருந்து  அளவு ',
+          labelText: 'மருந்து அளவு ',
           filled: true,
           fillColor: Colors.black.withOpacity(0.05),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
@@ -107,7 +107,7 @@ class _AddDiseaseState extends State<AddDisease> {
               ),
             ),
           ),
-          labelText: 'விளக்கம் ',
+          labelText: 'விளக்கம்',
           filled: true,
           fillColor: Colors.black.withOpacity(0.05),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
@@ -133,7 +133,7 @@ class _AddDiseaseState extends State<AddDisease> {
         'docEmail': widget.doctorEmail
       });
       controllerClear();
-      Toast.show('வெற்றிகரமாக சேர்க்கபட்டது !', context,
+      Toast.show('சேர்க்கப்பட்டது !', context,
           backgroundRadius: 5, backgroundColor: Colors.blue, duration: 3);
       Navigator.pop(context);
     }

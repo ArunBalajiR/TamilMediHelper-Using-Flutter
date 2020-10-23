@@ -97,7 +97,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
       decoration: InputDecoration(
           fillColor: Colors.black.withOpacity(0.07),
           filled: true,
-          labelText: 'பெயர் ',
+          labelText: 'பெயர்',
           prefixIcon: WidgetAnimator(Icon(Icons.person)),
           border: OutlineInputBorder(
               borderRadius: const BorderRadius.all(const Radius.circular(20)))),
@@ -113,7 +113,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
           filled: true,
           errorText: validateCNIC(_controllerCNIC.text),
           fillColor: Colors.black.withOpacity(0.07),
-          labelText: 'NIC நம்பர் ',
+          labelText: 'NIC எண்',
           prefixIcon: WidgetAnimator(Icon(Icons.credit_card)),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
     );
@@ -126,7 +126,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
         'cnic': _controllerCNIC.text,
       });
       _signIn(context)
-          .then((FirebaseUser user) => print('Gmail Logged In'))
+          .then((FirebaseUser user) => print('மின்னஞ்சல் உள்நுழைவு'))
           .catchError((e) => print(e));
       controllerClear();
     }
@@ -163,7 +163,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                           height: height * 0.05,
                         ),
                         Text(
-                          "\t\tஉள்நுளை ",
+                          "\t\tஉள்நுளை",
                           style: GoogleFonts.abel(
                               fontSize: height * 0.044,
                               fontWeight: FontWeight.bold),
@@ -194,7 +194,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                               });
                               !validateName & !validateCNICVar
                                   ? getInfoAndLogin()
-                                  : Toast.show("காலியாக உள்ளது !", context,
+                                  : Toast.show("காலியாக உள்ளது!", context,
                                       backgroundColor: Colors.red,
                                       backgroundRadius: 5,
                                       duration: Toast.LENGTH_LONG);
@@ -210,7 +210,7 @@ class _DoctorLoginState extends State<DoctorLogin> {
                                 ),
                                 SizedBox(width: height * 0.015),
                                 Text(
-                                  'Login',
+                                  'புகுபதிகை',
                                   style: TextStyle(
                                       letterSpacing: 2,
                                       fontWeight: FontWeight.bold,

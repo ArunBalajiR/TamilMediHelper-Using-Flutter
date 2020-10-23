@@ -19,7 +19,7 @@ class AboutUs extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'About Us',
+                    'எங்களை பற்றி',
                     style: TextStyle(
                         fontWeight: FontWeight.bold, fontSize: height * 0.07),
                   ),
@@ -47,7 +47,7 @@ class AboutUs extends StatelessWidget {
                       ),
                       Text(
                         'Arun Balaji R'
-                        '\nNaveenChand RB',
+                        '\nNaveenchand R B',
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
