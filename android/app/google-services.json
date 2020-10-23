@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "245732815382",
+    "firebase_url": "https://tamilmedicalkit.firebaseio.com",
+    "project_id": "tamilmedicalkit",
+    "storage_bucket": "tamilmedicalkit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:245732815382:android:5fa4f1f9971454b2c7fb37",
+        "android_client_info": {
+          "package_name": "com.deardev.marundhagam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "245732815382-ivl9ok07u6vmmrhnm90rvt4u7ljbv602.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjw9-85MwUIqAR7PtL5sFeTx3JxOPCij8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "245732815382-ivl9ok07u6vmmrhnm90rvt4u7ljbv602.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
